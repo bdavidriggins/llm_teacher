@@ -54,7 +54,7 @@ def main():
     embeddings = load_embeddings(embeddings_file_path)
     
     # Load chunks for metadata update
-    chunks_file_path = '../sources/journal_roberts_rangers_chunks.txt'
+    chunks_file_path = '../../sources/journal_roberts_rangers_chunks.txt'
     with open(chunks_file_path, 'r') as file:
         chunks = [chunk.strip() for chunk in file.read().split('\n\n') if chunk.strip()]
     
