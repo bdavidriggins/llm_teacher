@@ -1,0 +1,10 @@
+wikipedia-api
+sentence-transformers
+faiss-cpu
+transformers
+torch
+requests
+scikit-learn
+numpy
+pandas
+tqdm

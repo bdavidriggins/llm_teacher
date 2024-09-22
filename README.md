@@ -1,1 +1,1 @@
-# llm_teacher
+source rag_env/bin/activate
