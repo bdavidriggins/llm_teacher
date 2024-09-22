@@ -30,14 +30,21 @@ class RAGSystem:
         print(f"Ollama client initialized with API URL: {ollama_api_url}")
     
     def retrieve(self, query, top_k=25):
-        query_embedding = self.embedding_model.encode(query).astype('float32')
+        #query_embedding = self.embedding_model.encode(query).astype('float32')
+        query_embedding = self.embedding_model.encode(query, clean_up_tokenization_spaces=True).astype('float32')
+
+
         distances, indices = self.index.search(np.array([query_embedding]), top_k)
         retrieved = [self.metadata[idx] for idx in indices[0]]
+        print(f"Retrieved {len(retrieved)} documents for query: '{query}'")
+        for doc in retrieved:
+            print(f" - {doc['title'][:50]}")  # Assuming each doc has a 'title' field
         return retrieved
     
     def generate(self, prompt, context):
-        return self.ollama.generate_response(prompt, context)
-    
+        combined_prompt = f"Context:\n{context}\n\nQuestion: {prompt}\nAnswer:"
+        return self.ollama.generate_response(combined_prompt)
+
     def rag_pipeline(self, query, retrieval_k=25, rerank_k=5):
         # Step 1: Retrieve top_k documents
         retrieved_docs = self.retrieve(query, top_k=retrieval_k)
