@@ -2,7 +2,9 @@ import wikipediaapi
 import json
 
 def get_wikipedia_articles(topics):
-    wiki_wiki = wikipediaapi.Wikipedia('en')
+    # Add a proper user agent string here
+    user_agent = "llm_teacher/1.0 (bdavidriggins@domain.com)"
+    wiki_wiki = wikipediaapi.Wikipedia('en', user_agent=user_agent)
     articles = {}
     for topic in topics:
         page = wiki_wiki.page(topic)
