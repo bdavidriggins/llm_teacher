@@ -30,15 +30,17 @@ class RAGSystem:
         print(f"Ollama client initialized with API URL: {ollama_api_url}")
     
     def retrieve(self, query, top_k=25):
-        #query_embedding = self.embedding_model.encode(query).astype('float32')
         query_embedding = self.embedding_model.encode(query, clean_up_tokenization_spaces=True).astype('float32')
-
 
         distances, indices = self.index.search(np.array([query_embedding]), top_k)
         retrieved = [self.metadata[idx] for idx in indices[0]]
         print(f"Retrieved {len(retrieved)} documents for query: '{query}'")
+        
         for doc in retrieved:
-            print(f" - {doc['title'][:50]}")  # Assuming each doc has a 'title' field
+            # Check if 'title' exists in the document and print it, or print a placeholder
+            title = doc.get('title', 'Untitled')
+            print(f" - {title[:50]}")  # Print the first 50 characters of the title
+
         return retrieved
     
     def generate(self, prompt, context):
