@@ -1,5 +1,5 @@
 # Define the relative path to the source file
-text_file_path = '../sources/journal_roberts_rangers.txt'
+text_file_path = '../../sources/journal_roberts_rangers.txt'
 
 def preprocess_and_chunk(text, max_length=1000):
     paragraphs = text.split('\n\n')  # Split by paragraphs
