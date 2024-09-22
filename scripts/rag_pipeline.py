@@ -77,7 +77,7 @@ if __name__ == "__main__":
     
     #Roberts Rangers Specific for RAG
     queries = [
-            "What challenges did Robert’s Rangers face during their missions? Give me a detailed long response in essay format.",
+            "What challenges did Robert’s Rangers face during their missions? Give me a detailed long response in essay format."
         ]
     # queries = [
     #         "What was the role of Robert's Rangers during the conflict mentioned in the text?",
