@@ -5,11 +5,11 @@ from sentence_transformers import SentenceTransformer
 import faiss
 
 # Paths
-sources_dir = '../../sources/'
-embeddings_dir = '../../faiss/'
-processed_files_log = '../../faiss/processed_files.json'
-faiss_index_path = '../../faiss/faiss_index.bin'
-faiss_metadata_path = '../../faiss/faiss_metadata.json'
+sources_dir = '../sources/'
+embeddings_dir = '../faiss/'
+processed_files_log = '../faiss/processed_files.json'
+faiss_index_path = '../faiss/faiss_index.bin'
+faiss_metadata_path = '../faiss/faiss_metadata.json'
 
 # ========== Step 1: Process New Files ==========
 def load_processed_files():
