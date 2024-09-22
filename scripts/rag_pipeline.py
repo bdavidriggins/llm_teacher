@@ -73,12 +73,23 @@ if __name__ == "__main__":
         ollama_api_url='http://localhost:11434/api/generate'  # Adjust if different
     )
     
-    # Example queries
+    #Roberts Rangers Specific for RAG
     queries = [
-        "What caused the Treaty of Versailles? Tell me all you know as an essay",
-        "How did the Industrial Revolution impact European economies? Tell me all you know as an essay",
-        "What were the key battles of World War I? Tell me all you know as an essay"
-    ]
+            "What was the role of Robert's Rangers during the conflict mentioned in the text?",
+            "Who was the leader of the Rangers, and what were his key strategies?",
+            "How did the tactics used by Robert’s Rangers differ from traditional military tactics of the time?",
+            "What challenges did Robert’s Rangers face during their missions?",
+            "Based on their missions, what can be inferred about the leadership style of Robert Rogers?",
+            "Compare the leadership of Robert Rogers with other prominent military leaders mentioned in the text.",
+            "What section of the text discusses the role of the Rangers in their first major engagement?"
+        ]
+    
+    # # Example queries
+    # queries = [
+    #     "What caused the Treaty of Versailles? Tell me all you know as an essay",
+    #     "How did the Industrial Revolution impact European economies? Tell me all you know as an essay",
+    #     "What were the key battles of World War I? Tell me all you know as an essay"
+    # ]
     
     for q in queries:
         print(f"\nQuery: {q}")
