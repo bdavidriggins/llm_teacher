@@ -1,11 +1,10 @@
-# File: update_faiss_index.py
 import os
 import json
 import faiss
 import numpy as np
 
 # Paths for embeddings and FAISS index
-embeddings_file_path = '../../faiss/embeddings.npy'
+embeddings_dir = '../../faiss/'
 faiss_index_path = '../../faiss/faiss_index.bin'
 faiss_metadata_path = '../../faiss/faiss_metadata.json'
 
@@ -23,7 +22,7 @@ def update_faiss_index(embeddings, index_path):
     faiss.write_index(index, index_path)
     print(f"Updated FAISS index with {len(embeddings)} new embeddings.")
 
-def update_metadata(chunks, metadata_path, source="journal_roberts_rangers.txt"):
+def update_metadata(chunks, metadata_path, source):
     """Update the FAISS metadata with new chunk information."""
     if not os.path.exists(metadata_path):
         metadata = []
@@ -45,24 +44,3 @@ def update_metadata(chunks, metadata_path, source="journal_roberts_rangers.txt")
     
     metadata.extend(new_metadata)
     
-    with open(metadata_path, 'w') as file:
-        json.dump(metadata, file, indent=2)
-    print(f"Updated metadata with {len(new_metadata)} new entries.")
-
-def main():
-    # Load embeddings and chunks
-    embeddings = load_embeddings(embeddings_file_path)
-    
-    # Load chunks for metadata update
-    chunks_file_path = '../../sources/journal_roberts_rangers_chunks.txt'
-    with open(chunks_file_path, 'r') as file:
-        chunks = [chunk.strip() for chunk in file.read().split('\n\n') if chunk.strip()]
-    
-    # Update FAISS index
-    update_faiss_index(embeddings, faiss_index_path)
-    
-    # Update metadata
-    update_metadata(chunks, faiss_metadata_path)
-
-if __name__ == '__main__':
-    main()

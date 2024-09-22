@@ -1,11 +1,11 @@
-# File: generate_embeddings.py
 import os
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-# Path to the preprocessed chunks
-chunks_file_path = '../../sources/journal_roberts_rangers_chunks.txt'
-embeddings_output_path = '../../faiss/embeddings.npy'
+# Path to the sources directory
+sources_dir = '../../sources/'
+# Embeddings output directory
+embeddings_output_dir = '../../faiss/'
 
 def load_chunks(file_path):
     """Load text chunks from a file."""
@@ -19,20 +19,25 @@ def generate_embeddings(chunks, model_name='all-MiniLM-L6-v2'):
     return embeddings.astype('float32')
 
 def main():
-    # Load the text chunks
-    if not os.path.exists(chunks_file_path):
-        print(f"Chunks file not found: {chunks_file_path}")
-        return
-    
-    chunks = load_chunks(chunks_file_path)
-    
-    # Generate embeddings for the chunks
-    embeddings = generate_embeddings(chunks)
-    print(f"Generated embeddings for {len(chunks)} chunks.")
-    
-    # Save embeddings to a file for later use
-    np.save(embeddings_output_path, embeddings)
-    print(f"Embeddings saved to {embeddings_output_path}")
+    # Process each chunks file in the sources directory
+    for file in os.listdir(sources_dir):
+        if file.endswith('_chunks.txt'):
+            chunks_file_path = os.path.join(sources_dir, file)
+            embeddings_file_path = os.path.join(embeddings_output_dir, f"{file}_embeddings.npy")
+            
+            # Load the text chunks
+            chunks = load_chunks(chunks_file_path)
+            if not chunks:
+                print(f"No chunks found in {chunks_file_path}")
+                continue
+            
+            # Generate embeddings for the chunks
+            embeddings = generate_embeddings(chunks)
+            print(f"Generated embeddings for {len(chunks)} chunks from {file}.")
+            
+            # Save embeddings to a file for later use
+            np.save(embeddings_file_path, embeddings)
+            print(f"Embeddings saved to {embeddings_file_path}")
 
 if __name__ == '__main__':
     main()
