@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LLM Chat Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .chat-box {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #fafafa;
+        }
+
+        .message {
+            margin-bottom: 15px;
+        }
+
+        .user-message {
+            text-align: right;
+        }
+
+        .user-message p {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+        }
+
+        .assistant-message {
+            text-align: left;
+        }
+
+        .assistant-message p {
+            display: inline-block;
+            background-color: #e2e2e2;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+        }
+
+        .input-area {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-area textarea {
+            resize: none;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .input-area button {
+            align-self: flex-end;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .input-area button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+            color: #555;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .chat-box {
+                height: 300px;
+            }
+
+            .input-area textarea {
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LLM Chat Interface</h1>
+        <div id="chatBox" class="chat-box">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="input-area">
+            <textarea id="userInput" placeholder="Type your message here..."></textarea>
+            <button id="sendButton">Send</button>
+            <div id="loading" class="loading">Generating response...</div>
+            <div id="error" class="error"></div>
+        </div>
+    </div>
+
+    <script>
+        const sendButton = document.getElementById('sendButton');
+        const userInput = document.getElementById('userInput');
+        const chatBox = document.getElementById('chatBox');
+        const loadingIndicator = document.getElementById('loading');
+        const errorDiv = document.getElementById('error');
+
+        let assistantMessageDiv = null; // Reference to the current assistant message
+
+        // Function to append messages to the chat box
+        function appendMessage(content, isUser = false) {
+            if (isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', 'user-message');
+
+                const messageContent = document.createElement('p');
+                messageContent.textContent = content;
+
+                messageDiv.appendChild(messageContent);
+                chatBox.appendChild(messageDiv);
+            } else {
+                if (!assistantMessageDiv) {
+                    assistantMessageDiv = document.createElement('div');
+                    assistantMessageDiv.classList.add('message', 'assistant-message');
+
+                    const messageContent = document.createElement('p');
+                    messageContent.textContent = ""; // Initialize empty
+
+                    assistantMessageDiv.appendChild(messageContent);
+                    chatBox.appendChild(assistantMessageDiv);
+                }
+
+                const messageContent = assistantMessageDiv.querySelector('p');
+                messageContent.textContent += content;
+            }
+
+            // Scroll to the bottom
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Function to handle sending the message
+        async function sendMessage() {
+            const inputText = userInput.value.trim();
+            if (inputText === "") {
+                alert("Please enter a message.");
+                return;
+            }
+
+            // Disable the send button and show loading
+            sendButton.disabled = true;
+            loadingIndicator.style.display = 'block';
+            errorDiv.textContent = "";
+
+            // Append user's message
+            appendMessage(inputText, true);
+            userInput.value = "";
+
+            // Reset assistant message reference
+            assistantMessageDiv = null;
+
+            try {
+                // Send POST request to /stream_chat
+                const response = await fetch('/stream_chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ input_text: inputText })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.response || `Server error: ${response.statusText}`);
+                }
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let done = false;
+                let buffer = "";
+
+                while (!done) {
+                    const { value, done: doneReading } = await reader.read();
+                    done = doneReading;
+                    buffer += decoder.decode(value, { stream: true });
+
+                    // Process the buffer for SSE data
+                    let regex = /data: (.*)\n\n/g;
+                    let match;
+                    while ((match = regex.exec(buffer)) !== null) {
+                        const data = match[1];
+                        if (data.startsWith("Error")) {
+                            throw new Error(data);
+                        }
+                        appendMessage(data, false);
+                    }
+
+                    // Remove processed data from buffer
+                    buffer = buffer.slice(regex.lastIndex);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                errorDiv.textContent = `Error: ${error.message}`;
+            } finally {
+                // Re-enable the send button and hide loading
+                sendButton.disabled = false;
+                loadingIndicator.style.display = 'none';
+            }
+        }
+
+        // Event listener for the send button
+        sendButton.addEventListener('click', sendMessage);
+
+        // Allow pressing Enter to send the message
+        userInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendButton.click();
+            }
+        });
+    </script>
+</body>
+</html>
