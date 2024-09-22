@@ -42,8 +42,7 @@ class RAGSystem:
         return retrieved
     
     def generate(self, prompt, context):
-        combined_prompt = f"Context:\n{context}\n\nQuestion: {prompt}\nAnswer:"
-        return self.ollama.generate_response(combined_prompt)
+        return self.ollama.generate_response(prompt=prompt, context=context)
 
     def rag_pipeline(self, query, retrieval_k=25, rerank_k=5):
         # Step 1: Retrieve top_k documents
