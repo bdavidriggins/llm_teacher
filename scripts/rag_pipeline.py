@@ -75,9 +75,9 @@ if __name__ == "__main__":
     
     # Example queries
     queries = [
-        "What caused the Treaty of Versailles?",
-        "How did the Industrial Revolution impact European economies?",
-        "What were the key battles of World War I?"
+        "What caused the Treaty of Versailles? Tell me all you know as an essay",
+        "How did the Industrial Revolution impact European economies? Tell me all you know as an essay",
+        "What were the key battles of World War I? Tell me all you know as an essay"
     ]
     
     for q in queries:
