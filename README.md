@@ -11,3 +11,4 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 
 conda install -c pytorch faiss-gpu
+pip install transformers torch
