@@ -37,7 +37,7 @@ def main():
     print(f"Total chunks created: {len(chunks)}")
 
     # Save the chunks for later embedding processing
-    with open('../sources/journal_roberts_rangers_chunks.txt', 'w') as chunk_file:
+    with open('../../sources/journal_roberts_rangers_chunks.txt', 'w') as chunk_file:
         for chunk in chunks:
             chunk_file.write(chunk + '\n\n')
 
