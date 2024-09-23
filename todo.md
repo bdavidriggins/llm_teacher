@@ -1,7 +1,16 @@
-Start up the server and unit test.
+
+## TODO
+
+
 The last code built for testing was main.py and it does all the data prep.
 rag_pipeline.py is the code that codes the RAG model.
-Docker and Python model are fixed and work on the current prototpye server.
+
+There is an issue with the VM/Nvidia/GPUs/Docker.  When I restart the VM it will only start using the GPU if I reboot the docker 
+sudo systemctl restart docker
+I archived the GPT chat on the issue. 
+
+
+
 
 
 You raise a very important point about the limitations of the RAG (Retrieval-Augmented Generation) system you are working with compared to models like GPT-4. While GPT-4 (especially versions with API or enhanced capabilities, such as ChatGPT-4-turbo) can generate more contextually aware and nuanced responses, there are several factors at play that can affect the performance of your custom RAG system.
