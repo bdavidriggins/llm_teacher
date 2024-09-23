@@ -30,7 +30,8 @@ class RAGSystem:
         print(f"Ollama client initialized with API URL: {ollama_api_url}")
     
     def retrieve(self, query, top_k=25):
-        query_embedding = self.embedding_model.encode(query, clean_up_tokenization_spaces=True).astype('float32')
+        query_embedding = self.embedding_model.encode(query, clean_up_tokenization_spaces=False).astype('float32')
+
 
         distances, indices = self.index.search(np.array([query_embedding]), top_k)
         retrieved = [self.metadata[idx] for idx in indices[0]]
