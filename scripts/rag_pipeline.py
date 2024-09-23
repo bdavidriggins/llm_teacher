@@ -7,7 +7,7 @@ from generate_response import OllamaClient
 from tqdm import tqdm
 
 class RAGSystem:
-    def __init__(self, faiss_index_path, faiss_metadata_path, embedding_model_name='multi-qa-mpnet-base-dot-v1', reranker_model_name='cross-encoder/ms-marco-MiniLM-L-6-v2', ollama_api_url='http://localhost:11434/api/generate'):
+    def __init__(self, faiss_index_path, faiss_metadata_path, embedding_model_name='multi-qa-mpnet-base-dot-v1', reranker_model_name='cross-encoder/ms-marco-TinyBERT-L-6', ollama_api_url='http://localhost:11434/api/generate'):
         # Load FAISS index
         self.index = faiss.read_index(faiss_index_path)
         print("FAISS index loaded.")
@@ -77,7 +77,7 @@ if __name__ == "__main__":
         faiss_index_path=faiss_index_path,
         faiss_metadata_path=faiss_metadata_path,
         embedding_model_name='multi-qa-mpnet-base-dot-v1',
-        reranker_model_name='cross-encoder/ms-marco-MiniLM-L-6-v2',
+        reranker_model_name='cross-encoder/ms-marco-TinyBERT-L-6',
         ollama_api_url='http://localhost:11434/api/generate'  # Adjust if different
     )
     

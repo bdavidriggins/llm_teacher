@@ -3,7 +3,7 @@ import torch
 import json
 
 class Reranker:
-    def __init__(self, model_name='cross-encoder/ms-marco-MiniLM-L-6-v2'):
+    def __init__(self, model_name='cross-encoder/ms-marco-TinyBERT-L-6'):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSequenceClassification.from_pretrained(model_name)
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

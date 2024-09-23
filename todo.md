@@ -17,8 +17,7 @@ I archived the GPT chat on the issue.
 To make your RAG system more competitive with a model like GPT-4, consider the following optimizations:
 
 #### 1. **Improved Document Embedding and Retrieval:**
-   - **Use a more powerful embedding model**: The model you’re using (`all-MiniLM-L6-v2`) is fast but not the most powerful. Consider using a stronger model for generating embeddings, such as `all-mpnet-base-v2` or `multi-qa-mpnet-base-dot-v1`, which might yield better document retrieval quality.
-   - **Better FAISS configuration**: You can try different FAISS index configurations (such as `IVF`, `HNSW`, or `PQ` indices) that improve both retrieval speed and accuracy. Fine-tuning the FAISS setup can result in faster, more accurate lookups.
+
    - **Clustering**: If you have thousands of pages of data, clustering similar documents into topics could improve retrieval performance. You can use the clusters as an additional layer of filtering to surface more relevant documents.
    - **Contextual retrieval**: Instead of retrieving standalone documents, train a model to predict relevance given both the query and the document context. This might involve using a Cross-Encoder for reranking, as you already do in the `RAGSystem`.
 
