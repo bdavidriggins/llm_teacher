@@ -12,7 +12,7 @@ def load_chunks(file_path):
     with open(file_path, 'r') as file:
         return [chunk.strip() for chunk in file.read().split('\n\n') if chunk.strip()]
 
-def generate_embeddings(chunks, model_name='all-MiniLM-L6-v2'):
+def generate_embeddings(chunks, model_name='multi-qa-mpnet-base-dot-v1'):
     """Generate embeddings for the given text chunks."""
     embedding_model = SentenceTransformer(model_name)
     embeddings = embedding_model.encode(chunks, convert_to_numpy=True, show_progress_bar=True)
