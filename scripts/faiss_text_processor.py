@@ -113,13 +113,19 @@ def update_faiss_index(embeddings, index_path):
     """Load an existing FAISS index and add new embeddings to it."""
     if not os.path.exists(index_path):
         print(f"FAISS index not found at {index_path}. Initializing a new one.")
-        index = faiss.IndexFlatL2(embeddings.shape[1])  # Create a new FAISS index
+        d = embeddings.shape[1]  # Dimensionality of the embeddings
+        index = faiss.IndexHNSWFlat(d, 32)  # HNSW with 32 neighbors
+        
+        # Optional: Set parameters for higher recall or performance
+        index.hnsw.efSearch = 64  # Default is 16, increase for better recall
+        index.hnsw.efConstruction = 40  # Default is 40, adjust if needed
     else:
         index = faiss.read_index(index_path)
     
     index.add(embeddings)
     faiss.write_index(index, index_path)
     print(f"Updated FAISS index with {len(embeddings)} new embeddings.")
+
 
 def update_metadata(chunks, metadata_path, source):
     """Update the FAISS metadata with new chunk information."""

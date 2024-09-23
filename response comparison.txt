@@ -1,26 +1,36 @@
-I need to compare my base model with RAG enabled to a base chatgpt model and measure which response is better.  I am looking to get responses that are good for academic research and paper writing.  I am basically building a RAG system that can take in a lot of documents and produce college level papers and work based on those docements so I can use that in my own research and learning.
+I need to compare my models with RAG enabled and measure which response is better.  
+I am looking to get responses that are good for academic research and paper writing.  
+I am basically building a RAG system that can take in a lot of documents and produce college level papers and work based on those docements so I can use that in my own research and learning.
 
 Here is the question:
 What challenges did Robert’s Rangers face during their missions? Give me a detailed long response in essay format.
 
 
 
-This is the response from my base model with my RAG operating on llama3.1 70B RAG version 1.0::
-Robert Rogers's Rangers, an elite combat force of the British Army, faced numerous challenges during their missions in the wilderness of North America. As members of a special fraternity of fighting men, they were forged in countless fights against cruel enemies and uncharted terrain. One of the primary challenges the Rangers faced was navigating through treacherous landscapes, including knee-deep waters of spruce bogs, which tested their physical endurance and resilience.
+This is the response from my base model with my RAG operating on llama3.1 70B RAG version 1.2::
+Robert's Rangers, led by Major Robert Rogers, faced numerous challenges during their missions in the French and Indian War. The rangers were an elite group of colonial soldiers who specialized in unconventional warfare, conducting reconnaissance, raids, and skirmishes against the French and their Native American allies. Despite their expertise and bravery, they encountered several obstacles that tested their skills and resolve.
 
-The harsh environment was not the only obstacle; the Rangers also had to contend with severe adversity and hardship while on mission. The mental toll of being in a high-stress environment for extended periods cannot be overstated. Rogers himself seemed to possess an endless stamina, but his men, even the strongest among them, struggled to keep up with their commander's relentless pace. This was a testament to Rogers's exceptional leadership abilities and his ability to inspire his men despite the dire circumstances.
+One of the primary challenges the rangers faced was the harsh environment of the northeastern frontier. The rugged terrain, dense forests, and unpredictable weather conditions made it difficult for them to navigate and communicate effectively. The rangers had to be skilled in wilderness survival, able to endure extreme temperatures, and adapt to unexpected situations. For instance, during their expedition to Lake Champlain in 1759, they encountered severe snowstorms that slowed their progress and forced them to take shelter.
 
-Moreover, the Rangers were tasked with conducting ranging warfare in the wilderness, which required a high degree of flexibility and adaptability. The nature of this type of warfare necessitated quick thinking and decisive action, often without the luxury of prior planning or briefing. Rogers's twenty-eight rules for conducting ranging warfare in the wilderness were instrumental in guiding his men through these situations, but even with these guidelines, the Rangers faced numerous challenges that tested their skills and resolve.
+Another challenge the rangers faced was the cunning and resourcefulness of their French and Native American enemies. The French had a strong presence in the region, with well-fortified outposts and alliances with various Native American tribes. The rangers had to be constantly on guard against ambushes, raids, and sabotage. They also had to contend with the clever tactics employed by their enemies, such as fake retreats and decoy parties. During the Battle on Snowshoes in 1758, the rangers were ambushed by a combined force of French and Native American warriors, who used their knowledge of the terrain to launch a surprise attack.
 
-Another challenge the Rangers faced was maintaining high morale despite facing setbacks and adversity. The air of desperation that surrounded them could have easily led to demoralization and a breakdown in unit cohesion. However, Rogers's leadership and the esprit de corps of his command helped maintain a surprisingly high level of morale among his men. This was no mean feat considering they were operating in some of the most hostile environments imaginable.
+Furthermore, the rangers faced internal challenges, including logistical difficulties and personnel issues. They often had to operate with limited supplies and equipment, which made it difficult for them to sustain themselves on long missions. For example, during their expedition to Ticonderoga in 1759, they ran low on food and ammunition, forcing them to rely on foraging and improvisation. Additionally, the rangers sometimes struggled with discipline and morale, particularly when faced with prolonged periods of hardship or uncertainty.
 
-The Rangers also had to contend with being part of a task force consisting of individuals from different units within the British and Provincial armies. Integrating these diverse elements into a cohesive fighting unit presented its own set of challenges, but Rogers's leadership helped forge strong bonds among his men. They were united by their knowledge that they were the best fighting men in Amherst's army, which gave them a sense of pride and purpose.
+Despite these challenges, Robert's Rangers demonstrated remarkable resilience and adaptability. They developed innovative tactics, such as using snowshoes to move stealthily through the forest and employing Native American scouts to gather intelligence. The rangers also learned to rely on each other, developing strong bonds of trust and camaraderie that helped them overcome adversity.
 
-Furthermore, the Rangers had to overcome the physical toll of prolonged periods of combat and marching through hostile terrain. The human body can only endure so much before fatigue sets in, but Rogers's men pushed themselves to the limit, often beyond what was thought possible. This level of endurance required a deep reservoir of mental toughness, which not all soldiers possess.
+In conclusion, Robert's Rangers faced a range of challenges during their missions in the French and Indian War. From navigating the unforgiving environment of the northeastern frontier to countering the cunning tactics of their enemies, they demonstrated remarkable bravery, resourcefulness, and adaptability. Despite internal difficulties and external obstacles, the rangers remained a formidable force, playing a crucial role in the British war effort and cementing their place in American military history.
 
-Lastly, the Rangers faced an enemy that was cruel and unrelenting. Fighting against indigenous warriors who knew the terrain intimately presented unique challenges that tested the Rangers' skills in unconventional warfare. Rogers's experience fighting these enemies was invaluable in developing strategies to counter their tactics, but even with this knowledge, the Rangers still had to contend with being outnumbered and outgunned on occasion.
+References:
 
-In conclusion, Robert Rogers's Rangers faced numerous challenges during their missions, including navigating treacherous terrain, maintaining high morale despite setbacks, integrating diverse units into a cohesive fighting force, overcoming physical fatigue, and countering an enemy that was both familiar with the terrain and determined to resist. Despite these obstacles, the Rangers proved themselves to be elite fighting men who combined toughness, resilience, and determination to overcome even the most daunting challenges. Their legacy as members of a special fraternity of fighting men endures to this day, inspiring future generations of soldiers and outdoor enthusiasts alike.
+Rogers, Journals of Robert Rogers of the Rangers
+
+Brumwell, White Devil
+
+Ross, War on the Run
+
+Parkman, Montcalm and Wolfe
+
+Zaboly, A True Ranger
 
 
 
