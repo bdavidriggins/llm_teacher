@@ -7,12 +7,12 @@ class OllamaClient:
         self.model = "llama3.1:70b"  # Set the model here
         #self.model = "llama3.1"
 
-    def generate_response(self, prompt, context, max_tokens=512, temperature=0.7, stream=False):
+    def generate_response(self, prompt, context, max_tokens=4096, temperature=0.7, stream=False):  # Increase max_tokens
         full_prompt = f"Context:\n{context}\n\nQuestion:\n{prompt}\n\nAnswer:"
         payload = {
-            "model": self.model,  # Use the model variable here
+            "model": self.model,
             "prompt": full_prompt,
-            "max_tokens": max_tokens,
+            "max_tokens": max_tokens,  # Increased max_tokens for longer responses
             "temperature": temperature,
             "stream": stream
         }
@@ -32,3 +32,4 @@ class OllamaClient:
         except requests.exceptions.RequestException as e:
             print(f"Error communicating with Ollama: {e}")
             return ""
+

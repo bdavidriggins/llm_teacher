@@ -1,26 +1,7 @@
-I need to compare my base model with RAG enabled to a base chatgpt model and measure which response is better.  My RAG model has context books about roberts rangers loaded.
+I need to compare my base model with RAG enabled to a base chatgpt model and measure which response is better.  I am looking to get responses that are good for academic research and paper writing.  I am basically building a RAG system that can take in a lot of documents and produce college level papers and work based on those docements so I can use that in my own research and learning.
 
 Here is the question:
 What challenges did Robert’s Rangers face during their missions? Give me a detailed long response in essay format.
-
-
-
-This is the response from my base model with my RAG operating on llama3.1 8B RAG version 1.0:
-Robert's Rangers, a legendary force of elite fighting men led by the indefatigable Major Robert Rogers, faced numerous challenges during their missions that tested their mettle and forged them into an unbreakable fraternity. One of the primary difficulties they encountered was the unforgiving terrain of the American wilderness, particularly the knee-deep waters of the spruce bogs. These treacherous swamplands presented a formidable obstacle to the Rangers, requiring them to trudge through the murky waters with heavy loads and under constant threat from enemy forces.
-
-The harsh environment and arduous conditions took a toll on even the strongest men among the Rangers. The unrelenting pace of their missions, often lasting for days or weeks at a time, pushed the soldiers to their limits, making it difficult for them to maintain their stamina. Major Rogers's seemingly endless energy, however, served as a beacon of inspiration, motivating his troops to keep pace with him despite the hardships.
-
-Another significant challenge faced by the Rangers was the psychological strain of constant combat and the ever-present threat of death or capture. As members of a special fraternity of elite fighting men, they were acutely aware that their roles were not just that of soldiers but also those of scouts, spies, and saboteurs, operating behind enemy lines. This high-risk, high-reward approach to warfare bred an air of desperation among the Rangers, who knew that one misstep could prove fatal.
-
-Furthermore, the Rangers often operated with limited resources, receiving inadequate support from their superiors or struggling to obtain essential supplies in the field. This scarcity forced them to rely on their own ingenuity and resourcefulness, making every mission a test of creativity and determination.
-
-In addition to these physical and psychological challenges, Robert's Rangers also faced significant logistical hurdles during their missions. As an irregular force operating in a vast, uncharted wilderness, they frequently encountered difficulties in maintaining communication with their superiors or coordinating with other units. This isolation often left them vulnerable to enemy attacks or forced them to operate independently, without the benefit of supporting troops.
-
-Finally, the Rangers were aware that their success was not just dependent on their own abilities but also on the trust and confidence placed in them by their commanders. As elite fighting men, they knew that their reputation as a highly effective force relied heavily on their ability to deliver results in the face of adversity. This burden of expectation weighed heavily on Major Rogers and his troops, who were acutely conscious of the importance of their missions in shaping the outcome of the war.
-
-In summary, Robert's Rangers faced numerous challenges during their missions, including treacherous terrain, arduous conditions, constant combat, inadequate resources, logistical hurdles, and the burden of expectation. These difficulties tested the mettle of even the strongest men among the Rangers and forged them into an unbreakable fraternity of elite fighting men. Despite these obstacles, they persevered, driven by their unwavering commitment to each other and to their commander, Major Robert Rogers.
-
-
 
 
 
@@ -42,3 +23,20 @@ Lastly, the Rangers faced an enemy that was cruel and unrelenting. Fighting agai
 In conclusion, Robert Rogers's Rangers faced numerous challenges during their missions, including navigating treacherous terrain, maintaining high morale despite setbacks, integrating diverse units into a cohesive fighting force, overcoming physical fatigue, and countering an enemy that was both familiar with the terrain and determined to resist. Despite these obstacles, the Rangers proved themselves to be elite fighting men who combined toughness, resilience, and determination to overcome even the most daunting challenges. Their legacy as members of a special fraternity of fighting men endures to this day, inspiring future generations of soldiers and outdoor enthusiasts alike.
 
 
+
+This is the response from my base model with my RAG operating on llama3.1 70B RAG version 1.1:
+Answer: Robert Rogers' Rangers faced numerous challenges during their missions, which were instrumental in shaping the course of the French and Indian War. As an elite force, they were tasked with conducting reconnaissance, gathering intelligence, and carrying out raids behind enemy lines. The Rangers' experiences, as documented by Robert Rogers himself, provide a glimpse into the difficulties they encountered.
+
+One of the primary challenges faced by the Rangers was navigating the treacherous terrain of the northern frontier. The dense forests, rugged mountains, and swampy wetlands made it difficult for them to move undetected and quickly respond to enemy movements. This environment also took a toll on their physical health, with many men succumbing to disease, hunger, and exhaustion.
+
+Another significant challenge was the harsh weather conditions they encountered. The Rangers often had to endure extreme temperatures, from scorching heat to freezing cold, which made it difficult for them to maintain their equipment and stay healthy. For instance, during one mission, Rogers noted that his men were met with "a most violent storm of rain" (Hough, Journals of Robert Rogers of the Rangers, 27), which hindered their progress and made it challenging to keep their powder dry.
+
+The Rangers also faced challenges related to logistics and supply. They often had to rely on irregular supplies, which sometimes left them without essential provisions like food and ammunition. During one mission, Rogers noted that his men were forced to " subsist on green corn" (Rogers, Journals of Robert Rogers of the Rangers, 23) due to a lack of proper rations. This scarcity of resources made it difficult for them to sustain long-term operations.
+
+Moreover, the Rangers faced significant enemy opposition, which posed a constant threat to their safety and success. They were frequently attacked by French and Native American forces, who employed guerrilla warfare tactics like ambushes and skirmishes. During one engagement, Rogers' men were met with "a most violent fire" (Hough, Journals of Robert Rogers of the Rangers, 45) from an enemy force that outnumbered them. The Rangers had to rely on their training, discipline, and bravery to overcome these challenges.
+
+Additionally, the Rangers often struggled with maintaining cohesion and unity within their ranks. As a diverse group composed of colonists, Native Americans, and European soldiers, they faced cultural and linguistic barriers that made communication and coordination challenging. Rogers himself noted instances where his men were disordered or separated during battles (Hough, Journals of Robert Rogers of the Rangers, 45), which compromised their effectiveness.
+
+Lastly, the Rangers had to contend with the psychological toll of war. The constant exposure to violence, death, and uncertainty took a significant mental health toll on the men. Rogers noted instances where his men were "considerably disordered" (Hough, Journals of Robert Rogers of the Rangers, 45) after engaging in intense combat, which highlights the psychological strain they endured.
+
+In conclusion, Robert Rogers' Rangers faced numerous challenges during their missions, including treacherous terrain, harsh weather conditions, logistical difficulties, enemy opposition, internal cohesion issues, and psychological trauma. Despite these obstacles, they persevered and played a crucial role in shaping the outcome of the French and Indian War. Their experiences serve as a testament to the bravery, resilience, and determination of the Rangers, who have become an enduring symbol of American military history.

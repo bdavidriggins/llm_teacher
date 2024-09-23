@@ -29,7 +29,7 @@ class RAGSystem:
         self.ollama = OllamaClient(api_url=ollama_api_url)
         print(f"Ollama client initialized with API URL: {ollama_api_url}")
     
-    def retrieve(self, query, top_k=25):
+    def retrieve(self, query, top_k=100):
         query_embedding = self.embedding_model.encode(query, clean_up_tokenization_spaces=False).astype('float32')
 
 
@@ -47,7 +47,7 @@ class RAGSystem:
     def generate(self, prompt, context):
         return self.ollama.generate_response(prompt=prompt, context=context)
 
-    def rag_pipeline(self, query, retrieval_k=25, rerank_k=5):
+    def rag_pipeline(self, query, retrieval_k=100, rerank_k=50):  # Increase retrieval and rerank counts
         # Step 1: Retrieve top_k documents
         retrieved_docs = self.retrieve(query, top_k=retrieval_k)
         
@@ -57,10 +57,15 @@ class RAGSystem:
         # Step 3: Combine contexts
         contexts = "\n\n".join([doc['text'] for doc in reranked_docs])
         
+        # Ensure that the total context length does not exceed 128K tokens
+        if len(contexts) > 128000:
+            contexts = contexts[:127900]  # Truncate to ensure within token limit
+        
         # Step 4: Generate response using Ollama
         answer = self.generate(query, contexts)
         
         return answer
+
 
 if __name__ == "__main__":
     # Paths to FAISS index and metadata

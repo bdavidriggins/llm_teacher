@@ -24,9 +24,8 @@ def save_processed_files(processed_files):
     with open(processed_files_log, 'w') as file:
         json.dump(processed_files, file, indent=2)
 
-def preprocess_and_chunk(text, max_length=1000):
-    """Preprocesses and chunks the text into segments of up to `max_length` tokens."""
-    paragraphs = text.split('\n\n')  # Split by paragraphs
+def preprocess_and_chunk(text, max_length=4000):  # Increase chunk size from 1000 to 4000 tokens
+    paragraphs = text.split('\n\n')
     chunks = []
     current_chunk = ""
     
